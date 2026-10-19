@@ -72,8 +72,8 @@ try:
         print("")
         print("Fan:", fan_on, ", Mist:", mist_on)
 
-        # fan on when vpd < 0.2 and humi of "inside box" is less than humi of "inside dome"
-        if sID1_vpd < FAN_ON_THRESHOLD and fan_on is not True and sID1_humi < sID2_humi:
+        # fan on when vpd < 0.2 and humi of "inside box" is more than humi of "inside dome"
+        if sID1_vpd < FAN_ON_THRESHOLD and fan_on is not True and sID1_humi > sID2_humi:
             if send(FAN_ID, "SET_SPEED", FAN_DUTY):
                 fan_on = True
                 print("set fan ON")
